@@ -105,6 +105,12 @@ public class VersionUpdateUtils {
         builder.setPositiveButton("立刻升级", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                downloadNewApk(versionEntity.apkurl);
+            }
+        });
+        builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 enterHome();
             }
@@ -116,7 +122,9 @@ public class VersionUpdateUtils {
     }
     private void downloadNewApk(String apkurl){
         DownloadUtils downloadUtils = new DownloadUtils();
-        downloadUtils.downloadApk(apkurl,"mobilSafe.apk",context);
+        downloadUtils.downloadApk(apkurl,"mobileGuard.apk",context);
     }
+
+
 
 }
