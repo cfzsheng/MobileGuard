@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import cn.edu.gdmec.android.mobileguard.utils.MyUtils;
-import cn.edu.gdmec.android.mobileguard.utils.VersionUpdateUtils;
+import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
+import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 
 public class SplashActivity extends AppCompatActivity {
     private TextView mTvVersion;

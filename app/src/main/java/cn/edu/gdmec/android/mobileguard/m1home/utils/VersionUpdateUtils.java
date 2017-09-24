@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.utils;
+package cn.edu.gdmec.android.mobileguard.m1home.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,7 +22,7 @@ import java.io.IOException;
 
 import cn.edu.gdmec.android.mobileguard.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.enity.VersionEntity;
+import cn.edu.gdmec.android.mobileguard.m1home.enity.VersionEntity;
 
 /**
  * Created by pc on 2017/9/23.

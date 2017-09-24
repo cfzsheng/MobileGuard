@@ -1,4 +1,4 @@
-package cn.edu.gdmec.android.mobileguard.enity;
+package cn.edu.gdmec.android.mobileguard.m1home.enity;
 
 /**
  * Created by pc on 2017/9/23.
