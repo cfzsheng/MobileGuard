@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/bg_home">
+    android:background="@drawable/bg_home"
+    >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -27,8 +28,8 @@
 </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <GridLayout
+        android:layout_height="match_parent">
+        <GridView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gv_home"
@@ -36,6 +37,6 @@
             android:gravity="center"
             android:horizontalSpacing="10dp"
             android:numColumns="3">
-        </GridLayout>
+        </GridView>
     </RelativeLayout>
 </LinearLayout>
