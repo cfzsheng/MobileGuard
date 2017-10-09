@@ -37,7 +37,7 @@ public class VersionUpdateUtils {
     private static final int MESSAGE_JSON_ERROR = 103;
     private static final int MESSAGE_SHOW_DIALOG = 104;
     private static final int MESSAGE_ENTERHOME = 105;
-    private Handler handler = new Handler(){
+    public Handler handler = new Handler(){
         public void handleMessage(Message msg){
             switch (msg.what){
                 case MESSAGE_IO_ERROR:
