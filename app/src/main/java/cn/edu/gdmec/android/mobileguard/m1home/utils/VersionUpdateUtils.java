@@ -37,7 +37,6 @@ public class VersionUpdateUtils {
     private static final int MESSAGE_JSON_ERROR = 103;
     private static final int MESSAGE_SHOW_DIALOG = 104;
     private static final int MESSAGE_ENTERHOME = 105;
-
     private Handler handler = new Handler(){
         public void handleMessage(Message msg){
             switch (msg.what){
@@ -50,7 +49,7 @@ public class VersionUpdateUtils {
                     showUpdateDialog(versionEntity);
                     break;
                 case MESSAGE_ENTERHOME:
-                    Intent intent = new Intent(context, HomeActivity.class);
+                    Intent intent = new Intent(context,HomeActivity.class);
                     context.startActivity(intent);
                     context.finish();
                     break;
