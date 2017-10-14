@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.setUpPassWordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
@@ -73,21 +72,21 @@ public class HomeActivity extends AppCompatActivity {
         );
         setUpPassWordDialog.setCallBack(new setUpPassWordDialog.MyCallBack(){
             @Override
-                    public void ok(){
-                    String firstPwsd = setUpPassWordDialog.mFirstPWDET.getText().toString().trim();
-                    String affirmPwsd = setUpPassWordDialog.mAffirmET.getText().toString().trim();
-                    if (!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(firstPwsd)){
-                            if (firstPwsd.equals(affirmPwsd)){
-                                savePswd(affirmPwsd);
-                                setUpPassWordDialog.dismiss();
-                                showInterPswdDialog();
-                            }else{
-                                Toast.makeText(HomeActivity.this,"两次密码不一致!",Toast.LENGTH_LONG).show();
+            public void ok(){
+                String firstPwsd = setUpPassWordDialog.mFirstPWDET.getText().toString().trim();
+                String affirmPwsd = setUpPassWordDialog.mAffirmET.getText().toString().trim();
+                if (!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(firstPwsd)){
+                    if (firstPwsd.equals(affirmPwsd)){
+                        savePswd(affirmPwsd);
+                        setUpPassWordDialog.dismiss();
+                        showInterPswdDialog();
+                    }else{
+                        Toast.makeText(HomeActivity.this,"两次密码不一致!",Toast.LENGTH_LONG).show();
 
-                            }
-                        }else {
-                        Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_LONG).show();
                     }
+                }else {
+                    Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_LONG).show();
+                }
 
 
             }
@@ -111,13 +110,11 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this,"密码不能为空!",Toast.LENGTH_SHORT).show();
 
                 }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
-                    //進入防盗界面
                     mInPswdDialog.dismiss();
-                    startActivity(LostFindActivity.class);
                     Toast.makeText(HomeActivity.this, "可以进入手机防盗模块", Toast.LENGTH_LONG).show();
                 }else{
                     mInPswdDialog.dismiss();
-                   Toast.makeText(HomeActivity.this,"密码错误,请重新输入!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this,"密码错误,请重新输入!",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -130,24 +127,24 @@ public class HomeActivity extends AppCompatActivity {
         mInPswdDialog.setCancelable(true);
         mInPswdDialog.show();
     }
-private void savePswd(String affirmPwsd){
-    SharedPreferences.Editor edit = mshardPreferences.edit();
-    edit.putString("PhoneAntiTheftPWD",MD5Utils.encode(affirmPwsd));
-    edit.commit();
-}
+    private void savePswd(String affirmPwsd){
+        SharedPreferences.Editor edit = mshardPreferences.edit();
+        edit.putString("PhoneAntiTheftPWD",MD5Utils.encode(affirmPwsd));
+        edit.commit();
+    }
 
-private String getPassword(){
-    String password = mshardPreferences.getString("PhoneAntiTheftPWD",null);
-    if (TextUtils.isEmpty(password)){
-        return  "";
-    }return password;
-}
-private boolean isSetUpPassword(){
-    String  password = mshardPreferences.getString("PhoneAntiTheftPWD",null);
-    if (TextUtils.isEmpty(password)){
-        return false;
-    }return true;
-}
+    private String getPassword(){
+        String password = mshardPreferences.getString("PhoneAntiTheftPWD",null);
+        if (TextUtils.isEmpty(password)){
+            return  "";
+        }return password;
+    }
+    private boolean isSetUpPassword(){
+        String  password = mshardPreferences.getString("PhoneAntiTheftPWD",null);
+        if (TextUtils.isEmpty(password)){
+            return false;
+        }return true;
+    }
 
 }
 
