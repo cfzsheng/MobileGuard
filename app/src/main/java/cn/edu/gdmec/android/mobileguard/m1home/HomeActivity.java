@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
     private void showSetUpPswdDialog(){
         final setUpPassWordDialog setUpPassWordDialog = new setUpPassWordDialog(HomeActivity.this
         );
-        setUpPassWordDialog.setCallBack(new setUpPassWordDialog.MyCallBack(){
+        setUpPassWordDialog.setCallBack(new cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.setUpPassWordDialog.MyCallBack(){
             @Override
             public void ok(){
                 String firstPwsd = setUpPassWordDialog.mFirstPWDET.getText().toString().trim();
@@ -104,7 +104,7 @@ public class HomeActivity extends AppCompatActivity {
         final String password = getPassword();
         final InterPasswordDialog mInPswdDialog = new InterPasswordDialog(
                 HomeActivity.this);
-        mInPswdDialog.setMyCallBack(new InterPasswordDialog.MyCallBack(){
+        mInPswdDialog.setCallBack(new InterPasswordDialog.MyCallBack(){
             @Override
             public void confirm(){
                 if (TextUtils.isEmpty(mInPswdDialog.getPassword())){
@@ -121,9 +121,11 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void cancel() {
+            public void cancle() {
                 mInPswdDialog.dismiss();
             }
+
+
 
         });
         mInPswdDialog.setCancelable(true);
