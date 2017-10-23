@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup4Activty">
+    tools:context="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup4Activity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

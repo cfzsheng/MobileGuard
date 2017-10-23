@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup2Activty">
+    tools:context="cn.edu.gdmec.android.mobileguard.m2theftguard.Setup3Activity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,63 +28,44 @@
             android:layout_below="@+id/imgv"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="SIM卡绑定"
+            android:text="选择安全联系人"
             android:textColor="@android:color/white"
             android:textSize="18sp"/>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="4"
+        android:layout_height="55dp"
+        android:layout_margin="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/recomand_icon" />
-
-        <TextView
-            style="@style/textView16sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:lineSpacingMultiplier="1.5"
-            android:text="绑定SIM卡后,当再次重启手机时,若SIM卡信息发生变化,若SIM卡信息发生变化,手机卫士会自动发生报警短信给安全号码!"
-            android:textColor="@color/purple"
-            android:textScaleX="1.1" />
-    </LinearLayout>
-
-        <LinearLayout
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/et_inputphone"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:background="@drawable/coner_white_rec"
+            android:drawableLeft="@drawable/contact_et_left_icon"
+            android:hint="请输入安全号码"
+            android:inputType="phone"
+            android:textColorHighlight="@color/purple"/>
+        <Button
+            android:layout_width="55dp"
+            android:layout_height="45dp"
+            android:id="@+id/btn_addcontact"
             android:layout_weight="1"
-            android:gravity="center"
-            android:weightSum="1">
-
-            <Button
-                android:id="@+id/btn_bind_sim"
-                android:layout_width="52dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/sim_bind_selector"
-                android:gravity="center" />
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/add"
+            />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_weight="10"
         android:background="@color/purple"
+        android:layout_weight="10"
         android:gravity="center">
-        <include layout="@layout/setup_radiogroup"/>
+      <include layout="@layout/setup_radiogroup"/>
     </LinearLayout>
 </LinearLayout>
-
-
-

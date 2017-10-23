@@ -20,7 +20,7 @@ public class Setup3Activity extends BaseSetUpActivity implements View.OnClickLis
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup3_activty);
+        setContentView(R.layout.activity_setup3);
         //y
         ((RadioButton) findViewById(R.id.rb_third)).setChecked(true);
 

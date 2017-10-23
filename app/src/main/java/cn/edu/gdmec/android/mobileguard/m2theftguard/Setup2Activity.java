@@ -18,7 +18,7 @@ public class Setup2Activity extends BaseSetUpActivity implements View.OnClickLis
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup2_activty);
+        setContentView(R.layout.activity_setup2);
         //第二个
         ((RadioButton) findViewById(R.id.rb_second)).setChecked(true);
         //获取电话管理器这个系统服务器

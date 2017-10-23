@@ -14,7 +14,7 @@ public class Setup1Activity extends BaseSetUpActivity {
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup1_activty);
+        setContentView(R.layout.activity_setup1);
         ((RadioButton) findViewById(R.id.rb_first)).setChecked(true);
     }
     @Override
