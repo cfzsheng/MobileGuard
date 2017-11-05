@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">MobileGuard</string>
+    <string name="App_name">MobileGuard</string>
     <string name="title_activity_base_set_up">BaseSetUpActivity</string>
 </resources>
