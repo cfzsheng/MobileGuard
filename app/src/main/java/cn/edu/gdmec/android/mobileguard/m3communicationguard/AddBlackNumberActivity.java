@@ -22,6 +22,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
     private CheckBox mTelCB;
     private EditText mNameET;
     private EditText mNumET;
+    private EditText mTypeET;
     private BlackNumberDao dao;
     
     @Override
@@ -42,11 +43,13 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
         ImageView mLeftImgv = (ImageView)findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
-        //2222
         mSmsCB = (CheckBox)findViewById(R.id.cb_blacknumber_sms);
         mTelCB = (CheckBox)findViewById(R.id.cb_blacknumber_tel);
         mNumET = (EditText)findViewById(R.id.et_blacknumber);
         mNameET = (EditText)findViewById(R.id.et_blackname);
+        //马克
+        mTypeET = (EditText)findViewById(R.id.et_blacktype);
+
         findViewById(R.id.add_blacknum_btn).setOnClickListener(this);
         findViewById(R.id.add_fromcontact_btn).setOnClickListener(this);
     }
@@ -60,6 +63,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
             case R.id.add_blacknum_btn:
                 String number = mNumET.getText().toString().trim();
                 String name = mNameET.getText().toString().trim();
+                String type = mTypeET.getText().toString().trim();
                 if (TextUtils.isEmpty(number) || TextUtils.isEmpty(name)){
                     Toast.makeText(this,"电话号码和手机号不能为空",Toast.LENGTH_LONG).show();
                     return;
@@ -67,6 +71,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                     BlackContactInfo blackContactInfo = new BlackContactInfo();
                     blackContactInfo.phoneNumber = number;
                     blackContactInfo.contactName = name;
+                    blackContactInfo.blackType =  type;
                     if (mSmsCB.isChecked() & mTelCB.isChecked()){
                         blackContactInfo.mode =3;
                     }else if(mSmsCB.isChecked()& !mTelCB.isChecked()){
@@ -89,8 +94,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.add_fromcontact_btn:
                 startActivityForResult(
-                        new Intent(this,ContactSelectActivity.class),0
-                );
+                        new Intent(this,ContactSelectActivity.class),0);
                 break;
         }
     }
@@ -101,8 +105,11 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
         if (data!=null){
             String phone = data.getStringExtra("phone");
             String name = data.getStringExtra("name");
+            //马克
+            String type = data.getStringExtra("type");
             mNameET.setText(name);
             mNumET.setText(phone);
+            mTypeET.setText(type);
         }
     }
 }

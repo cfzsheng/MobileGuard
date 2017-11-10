@@ -29,11 +29,13 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //马克
         sqLiteDatabase.execSQL("create table blacknumber"+
         "(id integer primary key autoincrement,"+
         "number varchar(20),"+
         "name varchar(255),"+
-        "mode integer)");
+        "mode integer,"+
+        "type varchar(255))");
     }
 
     @Override

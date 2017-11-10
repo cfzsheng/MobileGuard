@@ -40,6 +40,8 @@ public class BlackNumberDao {
         values.put("number", blackContactInfo.phoneNumber);
         values.put("name", blackContactInfo.contactName);
         values.put("mode", blackContactInfo.mode);
+        //马克
+        values.put("type",blackContactInfo.blackType);
         long rowid = db.insert("blacknumber", null, values);
         if(rowid == -1){  // 插入数据不成功
             return false;
@@ -74,7 +76,8 @@ public class BlackNumberDao {
         // 得到可读的数据库
         SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(
-                "select number,mode,name from blacknumber limit ? offset ?",
+                //黑名单类型
+                "select number,mode,name,type from blacknumber limit ? offset ?",
                 new String[] { String.valueOf(pagesize),String.valueOf(pagesize * pagenumber)});
         List<BlackContactInfo> mBlackContactInfos = new ArrayList<BlackContactInfo>();
         while(cursor.moveToNext()){
@@ -82,6 +85,8 @@ public class BlackNumberDao {
             info.phoneNumber = cursor.getString(0);
             info.mode = cursor.getInt(1);
             info.contactName = cursor.getString(2);
+            //马克
+            info.blackType = cursor.getString(3);
             mBlackContactInfos.add(info);
         }
         cursor.close();
