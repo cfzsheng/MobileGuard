@@ -88,7 +88,8 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder.mAppLocationTV = (TextView)view.findViewById(R.id.tv_appisroom);
             viewHolder.mAppSizeTV = (TextView)view.findViewById(R.id.tv_appsize);
             viewHolder.mAppNameTV = (TextView)view.findViewById(R.id.tv_appname);
-            //about xml
+            //about.xml,activity.xml
+            viewHolder.mActivityAppTV = (TextView)view.findViewById(R.id.tv_activity_app);
             viewHolder.mAboutAppTV = (TextView)view.findViewById(R.id.tv_about_app);
             viewHolder.mLuanchAppTV = (TextView)view.findViewById(R.id.tv_lanch_app);
             viewHolder.mSettingAppTV = (TextView)view.findViewById(R.id.tv_setting_app);
@@ -121,6 +122,7 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUnistallTV.setOnClickListener(listener);
         viewHolder.mAboutAppTV.setOnClickListener(listener);
+        viewHolder.mActivityAppTV.setOnClickListener(listener);
         return view;
     }
 
@@ -143,6 +145,7 @@ public class AppManagerAdapter extends BaseAdapter {
         TextView mAppSizeTV;
         TextView mAppNameTV;
         TextView mAboutAppTV;
+        TextView mActivityAppTV;
         LinearLayout mAppOptionLL;
     }
 
@@ -171,9 +174,11 @@ public class AppManagerAdapter extends BaseAdapter {
                     }
                     EngineUtils.uninstallApplication(context,appInfo);
                     break;
-                //方法获取App暂未写入
                 case R.id.tv_about_app:
                     EngineUtils.AboutAppDetail(context,appInfo);
+                    break;
+                case R.id.tv_activity_app:
+                    EngineUtils.ActivityAppDetail(context,appInfo);
                     break;
 
 

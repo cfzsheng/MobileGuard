@@ -5,7 +5,7 @@ package cn.edu.gdmec.android.mobileguard.m1home.enity;
  */
 
 public class VersionEntity {
-    public String versionCode;
+    public String versioncode;
     public String description;
     public String apkurl;
 }

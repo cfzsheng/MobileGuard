@@ -62,7 +62,6 @@ public class EngineUtils {
             PackageInfo packageInfo = packageManager.getPackageInfo(appInfo.packageName,0);
             PackageInfo packageInfo1 = packageManager.getPackageInfo(appInfo.packageName,PackageManager.GET_PERMISSIONS);
             PackageInfo packageInfo2 = packageManager.getPackageInfo(appInfo.packageName,PackageManager.GET_SIGNATURES);
-
             String certMsg = "";
             Signature[] signatures = packageInfo2.signatures;
             CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
@@ -70,14 +69,6 @@ public class EngineUtils {
                     new ByteArrayInputStream(signatures[0].toByteArray()));
             certMsg += cert.getIssuerDN().toString();
             certMsg += cert.getSubjectDN().toString();
-
-
-
-
-
-
-
-
             AlertDialog builder = new AlertDialog.Builder(context).setTitle(appInfo.appName).
                     setMessage("Version:"+"\n"+packageInfo.versionName+"\n"+
                             "\n"+ "Install time:"+"\n"+DateFormat.format("yyyy年MM月dd号 hh:mm:ss",packageInfo.firstInstallTime)
@@ -103,6 +94,21 @@ public class EngineUtils {
             context.startActivity(intent);
         }else{
             Toast.makeText(context,"系统应用无法卸载",Toast.LENGTH_LONG).show();
+        }
+    }
+    public static void ActivityAppDetail(Context context,AppInfo appInfo){
+
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(appInfo.packageName,PackageManager.GET_ACTIVITIES);
+            AlertDialog builder = new AlertDialog.Builder(context).setTitle(appInfo.appName).setMessage("Activities:"+"\n"+Arrays.toString(packageInfo.activities)).setNegativeButton("返回", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            }).show();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
