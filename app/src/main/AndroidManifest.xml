@@ -54,7 +54,7 @@
         </receiver>
 
         <service
-            android:name=".m2theftguard.service.GPSLocationService"
+            android:name=".m2theftguard.server.GPSLocationService"
             android:enabled="true"
             android:exported="true"/>
 
@@ -110,6 +110,9 @@
         </activity>
         <activity android:name=".m6cleancache.CleanCacheActivity">
         </activity>
+
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
     </application>
 
 </manifest>
