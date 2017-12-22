@@ -77,26 +77,4 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
     }
-
-    private boolean hasPermission() {
-        AppOpsManager appOps = (AppOpsManager)getSystemService(Context.APP_OPS_SERVICE);
-        int mode = 0;
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT){
-            mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
-                    android.os.Process.myUid(),getPackageName());
-
-        }
-        return mode == AppOpsManager.MODE_ALLOWED;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == MY_PREMISSIONS_REQUEST_PACKAGE_USAGE_STATS){
-            if (!hasPermission()){
-                startActivityForResult(
-                        new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),MY_PREMISSIONS_REQUEST_PACKAGE_USAGE_STATS
-                );
-            }
-        }
-    }
 }
