@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
+import static cn.edu.gdmec.android.mobileguard.R.id.advanceview_applock;
+
 public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -25,7 +27,7 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
 
-        findViewById(R.id.advanceview_applock).setOnClickListener(this);
+        findViewById(advanceview_applock).setOnClickListener(this);
         findViewById(R.id.advanceview_numberlongs).setOnClickListener(this);
         findViewById(R.id.advanceview_smsbackup).setOnClickListener(this);
         findViewById(R.id.advanceview_smsreducition).setOnClickListener(this);
@@ -39,6 +41,9 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.advanceview_numberlongs:
                 startActivity(NumBelongtoActivity.class);
+                break;
+            case R.id.advanceview_applock:
+                    startActivity(AppLockActivity.class);
                 break;
         }
     }
