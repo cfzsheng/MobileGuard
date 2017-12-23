@@ -65,7 +65,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     private List<ScanAppInfo> mScanAppInfos = new ArrayList<ScanAppInfo>();
     private SharedPreferences mSP;
     private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
+        public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SCAN_BEGIN:
                     mScanAppTV.setText("初始化杀毒引擎中...");

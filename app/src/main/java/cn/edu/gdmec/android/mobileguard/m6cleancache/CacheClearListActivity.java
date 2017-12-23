@@ -146,7 +146,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             e.printStackTrace();
         }
     }
-    private class MyPackObserver extends android.content.pm.IPackageStatsObserver.Stub{
+    private class MyPackObserver extends IPackageStatsObserver.Stub{
         private PackageInfo info;
 
         public MyPackObserver(PackageInfo info){

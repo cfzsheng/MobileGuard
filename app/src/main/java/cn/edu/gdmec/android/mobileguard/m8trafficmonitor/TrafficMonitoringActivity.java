@@ -196,7 +196,7 @@ public class TrafficMonitoringActivity extends Activity implements
                             beyond = getStringTofloat(beyondflow);
                         }
                     }
-                    SharedPreferences.Editor edit = mSP.edit();
+                    Editor edit = mSP.edit();
 //                M8
                     System.out.println ("-----"+left);
 
@@ -234,7 +234,7 @@ public class TrafficMonitoringActivity extends Activity implements
                             beyond = getStringTofloat(beyondflow);
                         }
                     }
-                    SharedPreferences.Editor edit = mSP.edit();
+                    Editor edit = mSP.edit();
 //                M8
                     System.out.println ("-----"+left);
 
@@ -272,7 +272,7 @@ public class TrafficMonitoringActivity extends Activity implements
                             beyond = getStringTofloat(beyondflow);
                         }
                     }
-                    SharedPreferences.Editor edit = mSP.edit();
+                    Editor edit = mSP.edit();
 //                M8
                     System.out.println ("-----"+left);
 

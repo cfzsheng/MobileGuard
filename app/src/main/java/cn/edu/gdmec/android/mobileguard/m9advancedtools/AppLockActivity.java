@@ -120,7 +120,7 @@ public class AppLockActivity extends FragmentActivity implements OnClickListener
         }
 
         @Override
-        public android.support.v4.app.Fragment getItem(int arg0) {
+        public Fragment getItem(int arg0) {
             return mFragments.get(arg0);
         }
 

@@ -40,7 +40,7 @@ public class AppUnLockFragment extends Fragment {
     private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
     private List<AppInfo> appInfos;
     private Handler mhandler = new Handler(){
-        public void handleMessage(android.os.Message msg) {
+        public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 100:
                     unlockApps.clear();
