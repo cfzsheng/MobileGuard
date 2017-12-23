@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.webkit.MimeTypeMap;
@@ -30,7 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m1home.enity.VersionEntity;
+import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
@@ -77,13 +78,14 @@ public class VersionUpdateUtils {
                     showUpdateDialog(versionEntity);
                     break;
                 case MESSAGE_ENTERHOME:
-                    //Intent intent = new Intent(context, HomeActivity.class);
+                    /*Intent intent = new Intent(context, HomeActivity.class);
+                    context.startActivity ( intent );
+                    context.finish ();*/
                     /*Intent intent = new Intent ( context, VirusScanActivity.class );
                     context.startActivity(intent);
-
                     context.finish();*/
                     //老师模块5
-                    if(nextActivty!=null) {
+                   if(nextActivty!=null) {
                         Intent intent = new Intent(context, nextActivty);
                         context.startActivity(intent);
                         context.finish();
@@ -93,16 +95,7 @@ public class VersionUpdateUtils {
         }
     };
     //构造方法老师模块5
-//   public VersionUpdateUtils(String mVersion, Activity context) {
-//      this.mVersion = mVersion;
-//        this.context = context;
-    public VersionUpdateUtils(String mVersion, Activity context,Class<?> nextActivty) {
-        //apk升级
-        this.mVersion = mVersion;
-        this.context = context;
-        this.nextActivty = nextActivty;
-
-}
+    //public VersionUpdateUtils(String mVersion, Activity context) {
     public VersionUpdateUtils(String mVersion, Activity context,DownloadCallback downloadCallback,Class<?> nextActivty) {
         this.mVersion = mVersion;
         this.context = context;
@@ -116,41 +109,7 @@ public class VersionUpdateUtils {
 //    }
 
     //模块5老师，获取服务器版本号
-    public void getCloudVersion() {
-        /*****APK升级*****/
-
-        try {
-            HttpClient httpClient = new DefaultHttpClient();
-            /*连接超时*/
-            HttpConnectionParams.setConnectionTimeout(httpClient.getParams(), 5000);
-            /*请求超时*/
-            HttpConnectionParams.setSoTimeout(httpClient.getParams(), 5000);
-            HttpGet httpGet = new HttpGet("http://android2017.duapp.com/updateinfo.html");
-            HttpResponse execute = null;
-            execute = httpClient.execute(httpGet);
-            if (execute.getStatusLine().getStatusCode() == 200) {
-                // 请求和响应都成功了
-                HttpEntity httpEntity = execute.getEntity();
-                String result = EntityUtils.toString(httpEntity, "utf-8");
-                JSONObject jsonObject = new JSONObject(result);
-                versionEntity = new VersionEntity();
-                versionEntity.versioncode = jsonObject.getString("code");
-                versionEntity.description = jsonObject.getString("des");
-                versionEntity.apkurl = jsonObject.getString("apkurl");
-                if (!mVersion.equals(versionEntity.versioncode)) {
-                    // 版本号不一致
-                    handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
-                }
-            }
-        } catch (IOException e) {
-//            e.printStackTrace();
-            handler.sendEmptyMessage(MESSAGE_IO_ERROR);
-        } catch (JSONException e) {
-//            e.printStackTrace();
-            handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
-        }
-    }
-
+    //public void getCloudVersion() {
     public void getCloudVersion(String url){
         try {
             HttpClient httpClient = new DefaultHttpClient ();
@@ -180,19 +139,21 @@ public class VersionUpdateUtils {
                 String apkurl = jsonObject.getString("apkurl");
                 versionEntity.apkurl = apkurl;
 
-//                versionEntity.versioncode= jsonObject.getString("code");
-//
-//                versionEntity.description = jsonObject.getString("des");
-//
-//                versionEntity.apkurl = jsonObject.getString("apkurl");
+                //versionEntity.versioncode= jsonObject.getString("code");
+
+                //versionEntity.description = jsonObject.getString("des");
+
+                //versionEntity.apkurl = jsonObject.getString("apkurl");
                 if (!mVersion.equals(versionEntity.versioncode)) {
                     // 版本号不一致
                     handler.sendEmptyMessage ( MESSAGE_SHOW_DIALOG );
                 }
             }
         } catch (IOException e) {
+            handler.sendEmptyMessage(MESSAGE_IO_ERROR);
             e.printStackTrace();
         } catch (JSONException e) {
+            handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
             e.printStackTrace();
         }
     }
@@ -208,8 +169,9 @@ public class VersionUpdateUtils {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //下载apk
+                //initProgressDialog();
                 downloadNewApk(versionEntity.apkurl);
-                enterHome();
+                //enterHome();
             }
         });
         builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
@@ -224,14 +186,13 @@ public class VersionUpdateUtils {
     }
     //发送进入主界面消息
     private void enterHome() {
-        handler.sendEmptyMessageDelayed(MESSAGE_ENTERHOME,200);
+        handler.sendEmptyMessageDelayed(MESSAGE_ENTERHOME,2000);
     }
 
     private void downloadNewApk(String apkurl) {
         DownloadUtils downloadUtils = new DownloadUtils();
         //downloadUtils.downloadApk(apkurl, "mobileguard.apk", context);
-        downloadUtils.downloadApk(apkurl, "mobileguard.apk", context);
-        //downloadUtils.downloadApk(apkurl,"antivirus.db",context);  原来的
+        //downloadUtils.downloadApk(apkurl,"antivirus.db",context);
         String filename = "downloadfile";
         String suffixes="avi|mpeg|3gp|mp3|mp4|wav|jpeg|gif|jpg|png|apk|exe|pdf|rar|zip|docx|doc|apk|db";
         Pattern pat=Pattern.compile("[\\w]+[\\.]("+suffixes+")");//正则判断
@@ -258,7 +219,9 @@ public class VersionUpdateUtils {
         request.setVisibleInDownloadsUi(true);
 
         //sdcard的目录下的download文件夹，必须设置
-        request.setDestinationInExternalPublicDir("/download/", targetFile);
+        //request.setDestinationInExternalPublicDir("/download/", targetFile);
+        //更新
+        request.setDestinationInExternalPublicDir( Environment.DIRECTORY_DOWNLOADS, targetFile);
         //request.setDestinationInExternalFilesDir(),也可以自己制定下载路径
 
         //将下载请求加入下载队列

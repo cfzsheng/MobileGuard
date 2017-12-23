@@ -3,30 +3,19 @@ package cn.edu.gdmec.android.mobileguard.m9advancedtools.entity;
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by pc on 2017/12/16.
+ * Created by Jack on 2017/12/3.
  */
 
-public class Appinfo {
-    public String packageName;
-    public Drawable icon;
-    public String appName;
-    public String apkPath;
-    public long appSize;
-    public boolean isInRoom;
-    public boolean isUserApp;
-    public boolean isSelected = false;
-    public String versionName;
-    public long firstInstallTime;
-    public String signature;
-    public String requestedPermissions;
-    public String activities;
+public class AppInfo{
 
-    public String getAppLocation(boolean isInRoom) {
-        if (isInRoom){
-            return "手机内存";
-        }else {
-            return "外部存储";
-        }
-    }
+    /** 应用程序包名 */
+    public String packageName;
+    /** 应用程序图标 */
+    public Drawable icon;
+    /** 应用程序名称 */
+    public String appName;
+    /** 应用程序路径 */
+    public String apkPath;
+    /**应用程序是否加锁*/
     public boolean isLock;
 }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity">
+    android:orientation="vertical">
+
     <include layout="@layout/titlebar"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,14 +18,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:id="@+id/fl_noblacknumbericon"
+                    android:id="@+id/noblacknumbericon"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/no_blacknumbericon"/>
                 <TextView
-                   style="@style/textView16sp"
-                    android:layout_below="@id/fl_noblacknumbericon"
+                    style="@style/textview16sp"
+                    android:layout_below="@+id/noblacknumbericon"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="16dp"
                     android:text="您还没有添加黑名单"
@@ -41,15 +40,16 @@
             android:visibility="gone">
             <ListView
                 android:id="@+id/lv_blacknumbers"
-                android:divider="#ffffff"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"
+                android:dividerHeight="1dp"
+                android:divider="#ffffff"/>
         </FrameLayout>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center">
         <Button
             android:id="@+id/btn_addblacknumber"
             android:layout_width="170dp"
@@ -57,6 +57,5 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/add_blacknumber_btn_selector"/>
-
     </LinearLayout>
 </LinearLayout>

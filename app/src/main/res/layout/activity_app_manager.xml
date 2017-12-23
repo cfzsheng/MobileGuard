@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    tools:context="cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <include layout="@layout/titlebar"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,14 +11,13 @@
         android:layout_margin="5dp">
         <TextView
             android:id="@+id/tv_phonememory_appmanager"
-            style="@style/textView12sp"
+            style="@style/textview12sp"
             android:layout_alignParentLeft="true"/>
         <TextView
             android:id="@+id/tv_sdmemory_appmanager"
-            style="@style/textView12sp"
+            style="@style/textview12sp"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

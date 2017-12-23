@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Environment;
 
@@ -15,7 +17,7 @@ import java.io.File;
  */
 
 public class MyUtils {
-    //获取版本号
+    //获取版本号,return 返回版本号
     public static String getVersion(Context context){
         PackageManager packageManager = context.getPackageManager();
         try {

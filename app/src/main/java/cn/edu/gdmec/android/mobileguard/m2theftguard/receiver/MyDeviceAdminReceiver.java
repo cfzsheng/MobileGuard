@@ -4,11 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-public class MyDeviceAdminReceiver extends BroadcastReceiver {
+/**
+ * Created by Jack on 2017/10/24.
+ */
 
+public class MyDeviceAdminReceiver extends BroadcastReceiver{
     @Override
-    public void onReceive(Context context, Intent intent) {
-        // TODO: This method is called when the BroadcastReceiver is receiving
-        // an Intent broadcast.
+    public void onReceive(Context context, Intent intent){
+        //一定要把向导创建的代码删掉，留下一个空方法
+
     }
 }

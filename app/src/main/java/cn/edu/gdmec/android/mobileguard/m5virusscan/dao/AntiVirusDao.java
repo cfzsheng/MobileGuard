@@ -1,8 +1,11 @@
 package cn.edu.gdmec.android.mobileguard.m5virusscan.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.io.File;
 
 /**
  * Created by Jack on 2017/11/13.
